@@ -1,0 +1,43 @@
+This lab was done along with the video courses provided by Router Gods and Khawar Butt. Khawar is an amazing trainer and you if are studying for Cisco certs, i would definitely encourage
+you to check this bootcamp he provided. 
+
+R5
+
+interface Loopback0
+ ip address 5.5.5.5 255.0.0.0
+!
+interface Ethernet0/0
+ ip address 192.1.25.5 255.255.255.0
+!
+router bgp 500
+ bgp router-id 5.5.5.5
+ bgp log-neighbor-changes
+ network 5.0.0.0
+ neighbor 192.1.25.2 remote-as 1000
+ neighbor 192.1.25.2 password cisco123
+!
+
+-----------------------------------------
+
+R2
+!
+interface Loopback0
+ no shutdown
+ ip address 2.2.2.2 255.0.0.0
+!
+interface Loopback10
+ no shutdown
+ ip address 10.2.2.2 255.255.255.0
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 192.1.25.2 255.255.255.0
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.1.12.2 255.255.255.0
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 192.1.23.2 255.255.255.0
+!
